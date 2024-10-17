@@ -13,9 +13,10 @@ export type Person = {
 export async function createPerson(
   person: Person,
 ): Promise<Person | undefined> {
+  console.log(`creating person ${person}`);
   try {
     const response = await axios.post<Person>(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/people`,
       {
         name: person.name,
         weight: person.weight,
@@ -32,7 +33,7 @@ export async function createPerson(
 export async function listPeople(): Promise<Array<Person>> {
   try {
     const response = await axios.get<Array<Person>>(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/people`,
     );
     return response.data;
   } catch {

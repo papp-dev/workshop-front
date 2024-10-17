@@ -72,10 +72,6 @@ export function DataTable<TData, TValue>({
     },
   });
 
-  useEffect(() => {
-    listPeople().then((response) => console.log(response));
-  });
-
   return (
     <div>
       <div className="flex items-center py-4 justify-between">

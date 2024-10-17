@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  workshop-front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_BACKEND_URL=http://api:8080/
+    networks:
+      - workshop-network
+    command: npm run dev
+
+networks:
+  workshop-network:
+    external: true
