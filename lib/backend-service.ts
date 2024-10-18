@@ -32,6 +32,7 @@ export async function createPerson(
 
 export async function listPeople(): Promise<Array<Person>> {
   try {
+    console.log(`url: ${process.env.NEXT_PUBLIC_BACKEND_UR}`)
     const response = await axios.get<Array<Person>>(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/people`,
     );
